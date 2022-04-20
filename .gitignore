@@ -1,3 +1,6 @@
 obj/
 bin/
 .DS_Store
+*.txt
+*.o
+*.d
