@@ -17,4 +17,5 @@ struct Option initOptions() {
     option.numeric = 0;
     option.capitalized = 0;
     option.special = 0;
+    return option;
 }
