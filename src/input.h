@@ -9,3 +9,4 @@ struct Option {
 };
 
 int isNumber(char* input);
+struct Option initOptions();

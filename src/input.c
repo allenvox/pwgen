@@ -9,3 +9,12 @@ int isNumber(char *input) {
     }
     return 0;
 }
+
+struct Option initOptions() {
+    struct Option option;
+    option.size = 8;
+    option.count = 1;
+    option.numeric = 0;
+    option.capitalized = 0;
+    option.special = 0;
+}
