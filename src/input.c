@@ -1,5 +1,7 @@
 #include "input.h"
 #include <ctype.h>
+#include <string.h>
+#include <stdlib.h>
 
 int isNumber(char *input) {
     for(int i = 0; input[i]; i++) {
@@ -21,6 +23,7 @@ struct Option initOptions() {
 }
 
 struct Option getOptions(struct Option option, int argc, char** argv) {
+    int numargs = 0;
     if(argc > 1) {
         for(int i = 1; i < argc; i++) {
             if(strcmp(argv[i], "-c") == 0) {
