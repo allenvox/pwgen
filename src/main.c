@@ -1,39 +1,52 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <string.h>
+#include "input.h"
+#include "random.h"
+#include "alphabetic.h"
 
-#define STD_PASSWORD_SIZE 8
-
-struct Option {
-    int numeric;
-    int capitalized;
-    int special;
-};
-
-char* generatePassword(int size, struct Option option) {
-    srand(time(0));
+char* generatePassword(struct Option option) {
+    int size = option.size;
     char *password = malloc(sizeof(char) * size);
-    if(option.numeric != 0 && option.capitalized != 0 && option.special != 0) {
+    int *cells = malloc(sizeof(int) * size);
+
+    for(int i = 0; i < size; i++) {
+        cells[i] = 0;
+    }
+
+    if(option.numeric == 0 && option.capitalized == 0 && option.special == 0) {
         for(int i = 0; i < size; i++) {
-            int letter = (rand()%(97-122))+97;
-            password[i] = (char)letter;
+            password[i] = getLowercase(i);
+        }
+
+    } else if(option.capitalized == 1) {
+        int guaranteed = getRandom(0, size-1, 0);
+        if(password[guaranteed] == 1) {
+            while(password[guaranteed] != 0) {
+                int i = 1;
+                guaranteed = getRandom(0, size-1, i);
+                i++;
+            }
+        }
+        password[guaranteed] = getCapital(0);
+        cells[guaranteed] = 1;
+
+        for(int i = 0; i < size; i++) {
+            if(cells[i] == 0) {
+                password[i] = getFromAlphabet(0,1,0,i);
+            }
         }
     }
+    free(cells);
     return password;
 }
 
 int main(int argc, char **argv)
-{
-    char *result = NULL;
-    struct Option option;
-    
-    if(argc == 1) {
-        option.numeric = 1;
-        option.capitalized = 1;
-        option.special = 1;
-        result = generatePassword(STD_PASSWORD_SIZE, option);
-    }
-
+{   
+    struct Option option = initOptions();
+    option = getOptions(option, argc, argv);
+    char *result = generatePassword(option);
     printf("%s\n", result);
+    free(result);
     return 0;
 }
