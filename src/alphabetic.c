@@ -10,13 +10,15 @@ char getCapital(int iteration) {
 }
 
 char getFromAlphabet(int numeric, int capitalized, int special, int iteration) {
+    char letter = '~';
     if(numeric == 1 && capitalized == 1 && special == 1) {
         
     } else if(numeric == 0 && capitalized == 1 && special == 0) {
         if(getRandom(0,1,iteration) == 0) {
-            return getLowercase(iteration+1);
+            letter = getLowercase(iteration+1);
         } else {
-            return getCapital(iteration+1);
+            letter = getCapital(iteration+1);
         }
     }
+    return letter;
 }
