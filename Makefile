@@ -2,13 +2,13 @@ CFLAGS = -Wall -Wextra -I src -I thirdparty -MMD
 DIRGUARD = @mkdir -p $(@D)
 
 all: bin/pawg
--include src/main.d obj/sha1.d
+-include obj/*.d
 
-bin/pawg: obj/main.o obj/sha1.o
+bin/pawg: obj/main.o obj/input.o obj/random.o obj/alphabetic.o
 	$(DIRGUARD)
 	gcc $(CFLAGS) -o $@ $^
 
-obj/main.o: src/main.c
+obj/%.o: src/%.c
 	$(DIRGUARD)
 	gcc $(CFLAGS) -c -o $@ $<
 
