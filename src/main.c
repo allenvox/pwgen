@@ -46,8 +46,14 @@ int main(int argc, char** argv)
 {
     struct Option option = initOptions();
     option = getOptions(option, argc, argv);
-    char* result = generatePassword(option);
-    printf("%s\n", result);
+    char* result;
+    for(int i = 0; i < option.count; i++) {
+        result = generatePassword(option);
+        printf("%s ", result);
+        if(option.column == 1 || i == option.count - 1) {
+            printf("\n");
+        }
+    }
     free(result);
     return 0;
 }
