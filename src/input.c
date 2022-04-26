@@ -6,7 +6,7 @@
 int isNumber(char* input)
 {
     for (int i = 0; input[i]; i++) {
-        if (!isdigit(input[i])) {
+        if (isdigit(input[i]) != 1) {
             return 1;
         }
     }
@@ -40,10 +40,11 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                 option.numeric = 1;
                 option.special = 1;
             } else if (isNumber(argv[i]) == 0) {
-                if (numargs != 0) {
-                    option.size = atoi(argv[i]);
-                } else {
+                if (numargs == 0) {
                     option.count = atoi(argv[i]);
+                    numargs++;
+                } else {
+                    option.size = atoi(argv[i]);
                 }
             }
         }
