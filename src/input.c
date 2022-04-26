@@ -21,6 +21,7 @@ struct Option initOptions()
     option.numeric = 0;
     option.capitalized = 0;
     option.special = 0;
+    option.column = 0;
     return option;
 }
 
@@ -39,6 +40,8 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                 option.capitalized = 1;
                 option.numeric = 1;
                 option.special = 1;
+            } else if (strcmp(argv[i], "-1") == 0) {
+                option.column = 1;
             } else if (isNumber(argv[i]) == 0) {
                 if (numargs == 0) {
                     option.count = atoi(argv[i]);

@@ -6,6 +6,7 @@ struct Option {
     int special;
     int size;
     int count;
+    int column;
 };
 
 int isNumber(char* input);
