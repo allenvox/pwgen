@@ -20,3 +20,12 @@ jobs:
 
       - name: Generate the password with capital letters
         run: bin/pawg -c
+
+      - name: Generate multiple passwords
+        run: bin/pawg 5
+
+      - name: Generate multiple passwords in columnm, sized 13
+        run: bin/pawg 4 13 -1
+
+      - name: Generate multiple passwords with capital letters in column, sized 6
+        run: bin/pawg 5 6 -1 -c
