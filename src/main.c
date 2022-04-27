@@ -20,7 +20,8 @@ char* generatePassword(struct Option option)
             password[i] = getLowercase(i);
         }
 
-    } else if (option.capitalized == 1) {
+    } 
+    if (option.capitalized == 1) {
         int guaranteed = getRandom(0, size - 1, 0);
         if (password[guaranteed] == 1) {
             while (password[guaranteed] != 0) {
@@ -35,6 +36,25 @@ char* generatePassword(struct Option option)
         for (int i = 0; i < size; i++) {
             if (cells[i] == 0) {
                 password[i] = getFromAlphabet(0, 1, 0, i);
+            }
+        }
+    }
+    if (option.numeric == 1){
+        int guaranteed = getRandom(0, size - 1, 0);
+        if (password[guaranteed] == 1) {
+            while (password[guaranteed] != 0) {
+                int i = 1;
+                guaranteed = getRandom(0, size - 1, i);
+                i++;
+            }
+        }
+        password[guaranteed] = getNumber(0);
+        cells[guaranteed] = 1;
+
+        for (int i = 0; i < size; i++) {
+            if (cells[i] == 0) {
+                
+                password[i] = getFromAlphabet(option.numeric, option.capitalized, option.special, i);
             }
         }
     }
