@@ -34,4 +34,10 @@ jobs:
         run: bin/pawg -n
       
       - name: Generate multiple passwords with numbers and capital letters
-        run: bin/ pawg 5 -n -c
+        run: bin/pawg 5 -n -c
+
+      - name: Generate multiple secure passwords
+        run: bin/pawg 9 10 -s
+
+      - name: Generate multiple passwords with special symbols
+        run: bin/pawg 5 5 -y
