@@ -1,11 +1,12 @@
 #include "password.h"
-#include "input.h"
 #include "alphabetic.h"
+#include "input.h"
 #include "random.h"
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int getGuaranteedIndex(int* cells, int size) {
+int getGuaranteedIndex(int* cells, int size)
+{
     int guaranteed = getRandom(0, size - 1);
     if (cells[guaranteed] == 1) {
         while (cells[guaranteed] != 0) {
@@ -27,17 +28,17 @@ char* generatePassword(struct Option option)
         cells[i] = 0;
     }
 
-    if(option.capitalized == 1) {
+    if (option.capitalized == 1) {
         int index = getGuaranteedIndex(cells, size);
         password[index] = getCapital();
     }
 
-    if(option.numeric == 1) {
+    if (option.numeric == 1) {
         int index = getGuaranteedIndex(cells, size);
         password[index] = getNumber();
     }
 
-    if(option.special == 1) {
+    if (option.special == 1) {
         int index = getGuaranteedIndex(cells, size);
         password[index] = getSpecial();
     }
@@ -47,7 +48,7 @@ char* generatePassword(struct Option option)
             password[i] = getFromAlphabet(option);
         }
     }
-    
+
     free(cells);
     return password;
 }

@@ -1,7 +1,7 @@
 #include "alphabetic.h"
 #include "input.h"
-#include "random.h"
 #include "password.h"
+#include "random.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
