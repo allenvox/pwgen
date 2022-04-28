@@ -7,6 +7,8 @@ struct Option {
     int size;
     int count;
     int column;
+    int vowels;
+    int hash;
 };
 
 int isNumber(char* input);
