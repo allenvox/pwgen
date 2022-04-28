@@ -1,3 +1,3 @@
 #pragma once
 
-int getRandom(int lower, int upper, int iteration);
+int getRandom(int lower, int upper);

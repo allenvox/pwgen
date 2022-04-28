@@ -1,25 +1,53 @@
 #include "alphabetic.h"
+#include "input.h"
 #include "random.h"
+#include <stdio.h>
+#include <string.h>
 
-char getLowercase(int iteration)
+char getLowercase()
 {
-    return (char)getRandom(97, 122, iteration);
+    return (char)getRandom(97, 122);
 }
 
-char getCapital(int iteration)
+char getCapital()
 {
-    return (char)getRandom(65, 90, iteration);
+    return (char)getRandom(65, 90);
 }
 
-char getFromAlphabet(int numeric, int capitalized, int special, int iteration)
+char getNumber()
+{
+    return (char)getRandom(48, 57);
+}
+
+char getSpecial()
+{
+    return (char)getRandom(33, 47);
+}
+
+char getFromAlphabet(struct Option option)
 {
     char letter = '~';
-    if (numeric == 1 && capitalized == 1 && special == 1) {
-    } else if (numeric == 0 && capitalized == 1 && special == 0) {
-        if (getRandom(0, 1, iteration) == 0) {
-            letter = getLowercase(iteration + 1);
-        } else {
-            letter = getCapital(iteration + 1);
+    for (int i = 0; letter == '~'; i++) {
+        int characterType = getRandom(1, 4);
+        switch (characterType) {
+        case 1:
+            letter = getLowercase();
+            break;
+        case 2:
+            if (option.capitalized == 1) {
+                letter = getCapital();
+            }
+            break;
+        case 3:
+            if (option.numeric == 1) {
+                letter = getNumber();
+            }
+            break;
+        case 4:
+            if (option.special == 1) {
+                letter = getSpecial();
+            }
+            break;
         }
     }
     return letter;
