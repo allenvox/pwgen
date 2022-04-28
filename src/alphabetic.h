@@ -1,6 +1,9 @@
 #pragma once
 
-char getLowercase(int iteration);
-char getCapital(int iteration);
-char getFromAlphabet(int numeric, int capitalized, int special, int iteration);
-char getNumber(int iteration);
+#include "input.h"
+
+char getLowercase();
+char getCapital();
+char getFromAlphabet(struct Option option);
+char getNumber();
+char getSpecial();
