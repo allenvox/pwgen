@@ -80,13 +80,14 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                     || strcmp(argv[i], "-sha1") == 0) {
                 if (!argv[i + 1]) {
                     printHelp();
+                    option.size = 0;
                 } else {
                     option.hash = 1;
                     strcpy(option.seed, argv[i + 1]);
                 }
             } else if (strcmp(argv[i], "-h") == 0) {
                 printHelp();
-                option.size = -1;
+                option.size = 0;
             } else if (isNumber(argv[i]) == 0) {
                 int number = atoi(argv[i]);
                 if (numargs == 0) {
@@ -107,7 +108,7 @@ struct Option getOptions(struct Option option, int argc, char** argv)
     if (option.character_options > option.size) {
         printf("\e[4msize of password is less than character options you've "
                "specified\e[0m\n");
-        option.size = -1;
+        option.size = 0;
     }
     return option;
 }
