@@ -4,7 +4,7 @@ DIRGUARD = @mkdir -p $(@D)
 all: bin/pawg
 -include obj/*.d
 
-bin/pawg: obj/main.o obj/input.o obj/random.o obj/alphabetic.o obj/password.o
+bin/pawg: obj/main.o obj/input.o obj/random.o obj/alphabetic.o obj/password.o obj/hash.o obj/sha1.o
 	$(DIRGUARD)
 	gcc $(CFLAGS) -o $@ $^
 
