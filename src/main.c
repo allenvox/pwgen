@@ -16,15 +16,16 @@ int main(int argc, char** argv)
         return 0;
     }
     char* result;
-    if(option.hash == 1 && option.size > 40) {
-        printf("\e[4mmax hash password length equals to 40 : letters after 40'th won't generate\e[0m\n");
+    if (option.hash == 1 && option.size > 40) {
+        printf("\e[4mmax hash password length equals to 40 : letters after "
+               "40'th won't generate\e[0m\n");
     }
     for (int i = 0; i < option.count; i++) {
-        if(option.hash == 1) {
+        if (option.hash == 1) {
             char* hash = getHashFromSeed(option.seed);
             option.seed = hash;
-            result = malloc(sizeof(char)*option.size);
-            for(int j = 0; j < option.size; j++) {
+            result = malloc(sizeof(char) * option.size);
+            for (int j = 0; j < option.size; j++) {
                 result[j] = hash[j];
             }
         } else {
