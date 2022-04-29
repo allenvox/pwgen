@@ -1,6 +1,7 @@
 #pragma once
 
 struct Option {
+    int character_options;
     int numeric;
     int capitalized;
     int special;
@@ -9,7 +10,7 @@ struct Option {
     int column;
     int vowels;
     int hash;
-    int character_options;
+    char* seed;
 };
 
 void printHelp();

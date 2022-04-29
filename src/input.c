@@ -40,6 +40,7 @@ struct Option initOptions()
     option.special = 0;
     option.vowels = 0;
     option.character_options = 0;
+    option.seed = malloc(sizeof(char));
     return option;
 }
 
@@ -72,11 +73,12 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                 option.column = 1;
             } else if (strcmp(argv[i], "-v") == 0) {
                 option.vowels = 1;
-            } else if (strcmp(argv[i], "-H") == 0) {
+            } else if (strcmp(argv[i], "-H") == 0 || strcmp(argv[i], "-sha1") == 0) {
                 if(!argv[i + 1]) {
                     printHelp();
                 } else {
-                    char* seed = argv[i + 1];
+                    option.hash = 1;
+                    strcpy(option.seed, argv[i + 1]);
                 }
             } else if (strcmp(argv[i], "-h") == 0) {
                 printHelp();
@@ -89,6 +91,7 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                 } else {
                     option.size = number;
                 }
+            } else if(strcmp(argv[i-1], "-H") == 0 || strcmp(argv[i-1], "-sha1") == 0) {
             } else {
                 printf("\e[4mcan't recognise parameter %s : skipping it\e[0m\n", argv[i]);
             }
