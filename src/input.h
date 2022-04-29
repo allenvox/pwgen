@@ -9,8 +9,10 @@ struct Option {
     int column;
     int vowels;
     int hash;
+    int character_options;
 };
 
+void printHelp();
 int isNumber(char* input);
 struct Option initOptions();
 struct Option getOptions(struct Option option, int argc, char** argv);

@@ -12,6 +12,9 @@ int main(int argc, char** argv)
     srand(time(NULL));
     struct Option option = initOptions();
     option = getOptions(option, argc, argv);
+    if(option.size == -1) {
+        return 0;
+    }
     char* result;
     for (int i = 0; i < option.count; i++) {
         result = generatePassword(option);
