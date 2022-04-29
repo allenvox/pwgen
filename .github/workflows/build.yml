@@ -41,3 +41,12 @@ jobs:
 
       - name: Generate multiple passwords with special symbols
         run: bin/pawg 5 5 -y
+
+      - name: Run the -help flag
+        run: bin/pawg -h
+
+      - name: Generate full-length hash password using seed "hello"
+        run: bin/pawg 1 40 -H hello
+        
+      - name: Generate multiple hash-based segmented passwords using seed "scrubs"
+        run: bin/pawg 5 20 -sha1 scrubs
