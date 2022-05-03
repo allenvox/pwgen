@@ -50,3 +50,9 @@ jobs:
         
       - name: Generate multiple hash-based segmented passwords using seed "scrubs"
         run: bin/pawg 5 20 -sha1 scrubs
+
+      - name: Build application tests
+        run: make test
+
+      - name: Run unit tests
+        run: bin/pawg-test
