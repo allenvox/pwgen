@@ -47,3 +47,28 @@ CTEST(check_initoptions, invalid)
     int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST(check_getoptions, valid)
+{
+    struct Option option = initOptions();
+    char *argv[3];
+    argv[0] = "pawg";
+    argv[1] = "-sha1";
+    argv[2] = "a";  
+    option = getOptions(option,2,argv);
+    int result = option.hash;
+    int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getoptions, invalid)
+{
+    struct Option option = initOptions();
+    char *argv[2];
+    argv[0] = "pawg";
+    argv[1] = "-sha1";
+    option = getOptions(option,2,argv);
+    int result = option.size == 0;
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
