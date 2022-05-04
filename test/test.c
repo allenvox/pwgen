@@ -21,6 +21,13 @@ CTEST(check_random, invalid)
 CTEST(check_isnumber, valid)
 {
     int result = isNumber("1000");
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_isnumber, invalid)
+{
+    int result = isNumber("AVC");
     int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
