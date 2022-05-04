@@ -116,3 +116,17 @@ CTEST(check_getcapital, invalid)
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST(check_getspecial, valid)
+{
+    int result = (int)getSpecial() <= 47 && (int)getSpecial() >= 33; 
+    int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getspecial, invalid)
+{
+    int result = (int)getSpecial() > 47 || (int)getSpecial() < 33; 
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
