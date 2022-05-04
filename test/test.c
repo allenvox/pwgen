@@ -1,6 +1,8 @@
 #include "random.h"
 #include <ctest.h>
 #include "input.h"
+#include "hash.h"
+#include "alphabetic.h"
 
 CTEST(check_random, valid)
 {
@@ -69,6 +71,34 @@ CTEST(check_getoptions, invalid)
     argv[1] = "-sha1";
     option = getOptions(option,2,argv);
     int result = option.size == 0;
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
+
+// CTEST(check_sha1, valid)
+// {
+//     int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d",getHashFromSeed("hello"));
+//     int expected = 0; 
+//     ASSERT_EQUAL(expected, result);
+// }
+
+// CTEST(check_sha1, invalid)
+// {
+//     int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cdea9434d",getHashFromSeed("hello"));
+//     int expected = 0; 
+//     ASSERT_NOT_EQUAL(expected, result);
+// }
+
+CTEST(check_getlowercase, valid)
+{
+    int result = (int)getLowercase() <= 122 && (int)getLowercase() >= 97; 
+    int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getlowercase, invalid)
+{
+    int result = (int)getLowercase() > 122 || (int)getLowercase() < 97; 
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
