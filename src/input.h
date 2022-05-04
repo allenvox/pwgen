@@ -8,7 +8,6 @@ struct Option {
     int size;
     int count;
     int column;
-    int vowels;
     int hash;
     char* seed;
 };

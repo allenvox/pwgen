@@ -16,7 +16,6 @@ void printHelp()
     printf("\t-y\t  : include at least one special character\n");
     printf("\t-s\t  : generate a secure password including all characters "
            "(alias for -c -n -y)\n");
-    printf("\t-v\t  : don't include vowels in password\n");
     printf("\t-H <seed> : generate password based on sha1-hash of seed\n\n");
 }
 
@@ -39,8 +38,6 @@ struct Option initOptions()
     option.capitalized = 0;
     option.special = 0;
     option.column = 0;
-    option.special = 0;
-    option.vowels = 0;
     option.character_options = 0;
     option.seed = malloc(sizeof(char));
     return option;
@@ -73,8 +70,6 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                 option.character_options = 3;
             } else if (strcmp(argv[i], "-1") == 0) {
                 option.column = 1;
-            } else if (strcmp(argv[i], "-v") == 0) {
-                option.vowels = 1;
             } else if (
                     strcmp(argv[i], "-H") == 0
                     || strcmp(argv[i], "-sha1") == 0) {
