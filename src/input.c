@@ -39,7 +39,6 @@ struct Option initOptions()
     option.capitalized = 0;
     option.special = 0;
     option.column = 0;
-    option.special = 0;
     option.vowels = 0;
     option.character_options = 0;
     option.seed = malloc(sizeof(char));
