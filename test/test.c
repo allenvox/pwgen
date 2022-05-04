@@ -102,3 +102,17 @@ CTEST(check_getlowercase, invalid)
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST(check_getcapital, valid)
+{
+    int result = (int)getCapital() <= 90 && (int)getCapital() >= 65; 
+    int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getcapital, invalid)
+{
+    int result = (int)getCapital() > 90 || (int)getCapital() < 65; 
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
