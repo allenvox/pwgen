@@ -130,3 +130,17 @@ CTEST(check_getspecial, invalid)
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST(check_getnumber, valid)
+{
+    int result = (int)getNumber() <= 57 && (int)getNumber() >= 48; 
+    int expected = 1;
+    ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getnumber, invalid)
+{
+    int result = (int)getNumber() > 57 || (int)getNumber() < 48; 
+    int expected = 0;
+    ASSERT_EQUAL(expected, result);
+}
