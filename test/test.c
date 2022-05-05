@@ -75,19 +75,19 @@ CTEST(check_getoptions, invalid)
     ASSERT_EQUAL(expected, result);
 }
 
-// CTEST(check_sha1, valid)
-// {
-//     int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d",getHashFromSeed("hello"));
-//     int expected = 0; 
-//     ASSERT_EQUAL(expected, result);
-// }
+CTEST(check_sha1, valid)
+{
+    int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cd9aea9434d",getHashFromSeed("hello"));
+    int expected = 0; 
+    ASSERT_EQUAL(expected, result);
+}
 
-// CTEST(check_sha1, invalid)
-// {
-//     int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cdea9434d",getHashFromSeed("hello"));
-//     int expected = 0; 
-//     ASSERT_NOT_EQUAL(expected, result);
-// }
+CTEST(check_sha1, invalid)
+{
+    int result = strcmp("aaf4c61ddcc5e8a2dabede0f3b482cdea9434d",getHashFromSeed("hello"));
+    int expected = 0; 
+    ASSERT_NOT_EQUAL(expected, result);
+}
 
 CTEST(check_getlowercase, valid)
 {
