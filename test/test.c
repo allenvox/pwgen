@@ -4,6 +4,7 @@
 #include "hash.h"
 #include "alphabetic.h"
 #include <string.h>
+#include "password.h"
 
 CTEST(check_random, valid)
 {
@@ -192,4 +193,30 @@ CTEST(check_getfromalphabet, invalid2)
     int result = cap && low && num && spec;
     int expected = 0;
     ASSERT_EQUAL(expected, result);
+}
+
+CTEST(check_getguaranteedindex, valid)
+{
+    int cells[5];
+    cells[0] = 1;
+    cells[1] = 1;
+    cells[2] = 1;
+    cells[3] = 0;
+    cells[4] = 1;
+    int result = getGuaranteedIndex(cells,5);
+    int expected = 3;
+    ASSERT_EQUAL(expected,result);
+}
+
+CTEST(check_getguaranteedindex, invalid)
+{
+    int cells[5];
+    cells[0] = 0;
+    cells[1] = 0;
+    cells[2] = 0;
+    cells[3] = 1;
+    cells[4] = 0;
+    int result = getGuaranteedIndex(cells,5);
+    int expected = 3;
+    ASSERT_NOT_EQUAL(expected,result);
 }
