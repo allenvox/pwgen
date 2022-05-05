@@ -22,12 +22,13 @@ char* getHashFromSeed(char* seed)
     if (err) {
         printf("hash result error\n");
     }
-    char* output = malloc(sizeof(char) * 40);
+    char* output = malloc(sizeof(char) * 41);
     for (int i = 0; i < 20; i++) {
         char segment[3];
         sprintf(segment, "%02x", Message_Digest[i]);
         output[i * 2] = segment[0];
         output[i * 2 + 1] = segment[1];
     }
+    output[40] = '\0';
     return output;
 }
