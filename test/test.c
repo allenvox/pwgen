@@ -3,6 +3,7 @@
 #include "input.h"
 #include "hash.h"
 #include "alphabetic.h"
+#include <string.h>
 
 CTEST(check_random, valid)
 {
@@ -144,3 +145,5 @@ CTEST(check_getnumber, invalid)
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
+
+CTEST(check_)
