@@ -190,15 +190,11 @@ CTEST(check_getfromalphabet, invalid1)
 CTEST(check_getfromalphabet, invalid2)
 {
     struct Option option = initOptions();
-    option.capitalized = 1;
-    option.special = 1;
-    option.numeric = 1;
     char s = getFromAlphabet(option);
-    int cap = s < 65 && s > 90;
-    int low = s < 97 && s > 122;
-    int num = s < 48 && s > 57;
-    int spec = s < 33 && s > 47;
-    int result = cap && low && num && spec;
+    int cap = s >= 65 && s <= 90;
+    int num = s >= 48 && s <= 57;
+    int spec = s >= 33 && s <= 47;
+    int result = cap || num || spec;
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
