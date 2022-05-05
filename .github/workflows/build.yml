@@ -15,44 +15,47 @@ jobs:
       - name: Build application
         run: make
 
-      - name: Generate the standard password
-        run: bin/pawg
-
-      - name: Generate the password with capital letters
-        run: bin/pawg -c
-
-      - name: Generate multiple passwords
-        run: bin/pawg 5
-
-      - name: Generate multiple passwords in columnm, sized 13
-        run: bin/pawg 4 13 -1
-
-      - name: Generate multiple passwords with capital letters in column, sized 6
-        run: bin/pawg 5 6 -1 -c
-
-      - name: Generate password with numbers
-        run: bin/pawg -n
-      
-      - name: Generate multiple passwords with numbers and capital letters
-        run: bin/pawg 5 -n -c
-
-      - name: Generate multiple secure passwords
-        run: bin/pawg 9 10 -s
-
-      - name: Generate multiple passwords with special symbols
-        run: bin/pawg 5 5 -y
-
-      - name: Run the -help flag
-        run: bin/pawg -h
-
-      - name: Generate full-length hash password using seed "hello"
-        run: bin/pawg 1 40 -H hello
-        
-      - name: Generate multiple hash-based segmented passwords using seed "scrubs"
-        run: bin/pawg 5 20 -sha1 scrubs
-
       - name: Build application tests
         run: make test
 
       - name: Run unit tests
         run: bin/pawg-test
+
+      - name: Run the -help flag
+        run: bin/pawg -h
+
+      - name: Run program with invalid input
+        run: bin/pawg -asd askdfj
+
+      - name: Generate standard password
+        run: bin/pawg
+
+      - name: Generate 1 password with capital letters
+        run: bin/pawg -c
+
+      - name: Generate 5 standard passwords
+        run: bin/pawg 5
+
+      - name: Generate 4 passwords in columnm, sized 13
+        run: bin/pawg 4 13 -1
+
+      - name: Generate 5 passwords sized 6 with capital letters, output in column
+        run: bin/pawg 5 6 -1 -c
+
+      - name: Generate 1 password including numbers
+        run: bin/pawg -n
+      
+      - name: Generate 5 passwords with numbers and capital letters
+        run: bin/pawg 5 -n -c
+
+      - name: Generate 9 secure passwords, output in column
+        run: bin/pawg 9 10 -s -1
+
+      - name: Generate 5 passwords with special symbols
+        run: bin/pawg 5 5 -y
+
+      - name: Generate full-length sha-1 (40) hash password using seed "hello"
+        run: bin/pawg 1 40 -H hello
+        
+      - name: Generate 5 hash-based segmented (size 20) passwords using seed "scrubs"
+        run: bin/pawg 5 20 -sha1 scrubs
