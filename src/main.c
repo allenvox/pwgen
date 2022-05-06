@@ -13,6 +13,7 @@ int main(int argc, char** argv)
     struct Option option = initOptions();
     option = getOptions(option, argc, argv);
     if (option.size == 0) {
+        printHelp();
         return 0;
     }
     char* result;

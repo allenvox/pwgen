@@ -73,15 +73,13 @@ struct Option getOptions(struct Option option, int argc, char** argv)
             } else if (
                     strcmp(argv[i], "-H") == 0
                     || strcmp(argv[i], "-sha1") == 0) {
-                if (!argv[i + 1]) {
-                    printHelp();
+                if (argc - 1 == i) {
                     option.size = 0;
-                } else {
+                } else if(argv[i + 1] != NULL) {
                     option.hash = 1;
                     strcpy(option.seed, argv[i + 1]);
                 }
             } else if (strcmp(argv[i], "-h") == 0) {
-                printHelp();
                 option.size = 0;
             } else if (isNumber(argv[i]) == 0) {
                 int number = atoi(argv[i]);
