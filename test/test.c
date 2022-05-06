@@ -42,7 +42,7 @@ CTEST(check_initoptions, valid)
     int result = option.size == 8 && option.capitalized == 0
             && option.numeric == 0 && option.special == 0 && option.column == 0
             && option.character_options == 0 && option.hash == 0;
-    int expected = 0;
+    int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -52,7 +52,7 @@ CTEST(check_initoptions, invalid)
     int result = option.size != 8 || option.capitalized != 0
             || option.numeric != 0 || option.special != 0 || option.column != 0
             || option.character_options != 0 || option.hash != 0;
-    int expected = 1;
+    int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -61,10 +61,10 @@ CTEST(check_getoptions, valid)
     struct Option option = initOptions();
     char* argv[3];
     argv[0] = "pawg";
-    argv[1] = "-sha1";
-    argv[2] = "a";
-    option = getOptions(option, 2, argv);
-    int result = option.hash;
+    argv[1] = "-s";
+    argv[2] = "-n";
+    option = getOptions(option, 3, argv);
+    int result = option.capitalized && option.numeric && option.special;
     int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
@@ -74,9 +74,9 @@ CTEST(check_getoptions, invalid)
     struct Option option = initOptions();
     char* argv[2];
     argv[0] = "pawg";
-    argv[1] = "-sha1";
+    argv[1] = "abc";
     option = getOptions(option, 2, argv);
-    int result = option.size == 0;
+    int result = option.character_options;
     int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
