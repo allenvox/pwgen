@@ -42,7 +42,7 @@ CTEST(check_initoptions, valid)
     int result = option.size == 8 && option.capitalized == 0
             && option.numeric == 0 && option.special == 0 && option.column == 0
             && option.character_options == 0 && option.hash == 0;
-    int expected = 1;
+    int expected = 0;
     ASSERT_EQUAL(expected, result);
 }
 
@@ -52,7 +52,7 @@ CTEST(check_initoptions, invalid)
     int result = option.size != 8 || option.capitalized != 0
             || option.numeric != 0 || option.special != 0 || option.column != 0
             || option.character_options != 0 || option.hash != 0;
-    int expected = 0;
+    int expected = 1;
     ASSERT_EQUAL(expected, result);
 }
 
