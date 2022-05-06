@@ -75,7 +75,7 @@ struct Option getOptions(struct Option option, int argc, char** argv)
                     || strcmp(argv[i], "-sha1") == 0) {
                 if (argc - 1 == i) {
                     option.size = 0;
-                } else if(argv[i + 1] != NULL) {
+                } else if (argv[i + 1] != NULL) {
                     option.hash = 1;
                     strcpy(option.seed, argv[i + 1]);
                 }
