@@ -15,6 +15,7 @@ obj/%.o: src/%.c
 obj/sha1.o: thirdparty/sha1.c
 	gcc $(CFLAGS) -c -o $@ $<
 
+.PHONY: clean
 clean:
 	rm -rf obj/ bin/
 
