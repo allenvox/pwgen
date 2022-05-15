@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -I src -I thirdparty -MMD
+CFLAGS = -Wall -Wextra -I  src -MMD
 DIRGUARD = @mkdir -p $(@D)
 
 all: bin/pawg
@@ -12,9 +12,6 @@ obj/%.o: src/%.c
 	$(DIRGUARD)
 	gcc $(CFLAGS) -c -o $@ $<
 
-obj/sha1.o: thirdparty/sha1.c
-	gcc $(CFLAGS) -c -o $@ $<
-
 .PHONY: clean
 clean:
 	rm -rf obj/ bin/
@@ -26,9 +23,9 @@ bin/pawg-test: obj/test/main.o obj/test/test.o obj/libpawg.a
 	$(DIRGUARD)
 	gcc $(CFLAGS) -o $@ $^
 
-obj/test/%.o: test/%.c
+obj/test/%.o: test/%.c 
 	$(DIRGUARD)
-	gcc $(CFLAGS) -c -o $@ $<
+	gcc $(CFLAGS) -I thirdparty -c -o $@ $<
 
 obj/libpawg.a: obj/alphabetic.o obj/random.o obj/hash.o obj/sha1.o obj/input.o obj/password.o
 	ar rcs $@ $^
