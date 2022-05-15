@@ -6,22 +6,22 @@
 
 char getLowercase()
 {
-    return (char)getRandom(97, 122);
+    return (char)getRandom('a','z');
 }
 
 char getCapital()
 {
-    return (char)getRandom(65, 90);
+    return (char)getRandom('A','Z');
 }
 
 char getNumber()
 {
-    return (char)getRandom(48, 57);
+    return (char)getRandom('0', '9');
 }
 
 char getSpecial()
 {
-    return (char)getRandom(33, 47);
+    return (char)getRandom('!', '/');
 }
 
 char getFromAlphabet(struct Option option)
