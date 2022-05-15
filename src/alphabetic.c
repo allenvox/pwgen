@@ -6,12 +6,12 @@
 
 char getLowercase()
 {
-    return (char)getRandom('a','z');
+    return (char)getRandom('a', 'z');
 }
 
 char getCapital()
 {
-    return (char)getRandom('A','Z');
+    return (char)getRandom('A', 'Z');
 }
 
 char getNumber()
