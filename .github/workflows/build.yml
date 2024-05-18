@@ -19,43 +19,43 @@ jobs:
         run: make test
 
       - name: Run unit tests
-        run: bin/pawg-test
+        run: bin/pwgen-test
 
       - name: Run the -help flag
-        run: bin/pawg -h
+        run: bin/pwgen -h
 
       - name: Run program with invalid input
-        run: bin/pawg -asd askdfj
+        run: bin/pwgen -asd askdfj
 
       - name: Generate standard password
-        run: bin/pawg
+        run: bin/pwgen
 
       - name: Generate 1 password with capital letters
-        run: bin/pawg -c
+        run: bin/pwgen -c
 
       - name: Generate 5 standard passwords
-        run: bin/pawg 5
+        run: bin/pwgen 5
 
       - name: Generate 4 passwords in columnm, sized 13
-        run: bin/pawg 4 13 -1
+        run: bin/pwgen 4 13 -1
 
       - name: Generate 5 passwords sized 6 with capital letters, output in column
-        run: bin/pawg 5 6 -1 -c
+        run: bin/pwgen 5 6 -1 -c
 
       - name: Generate 1 password including numbers
-        run: bin/pawg -n
+        run: bin/pwgen -n
       
       - name: Generate 5 passwords with numbers and capital letters
-        run: bin/pawg 5 -n -c
+        run: bin/pwgen 5 -n -c
 
       - name: Generate 9 secure passwords, output in column
-        run: bin/pawg 9 10 -s -1
+        run: bin/pwgen 9 10 -s -1
 
       - name: Generate 5 passwords with special symbols
-        run: bin/pawg 5 5 -y
+        run: bin/pwgen 5 5 -y
 
       - name: Generate full-length sha-1 (40) hash password using seed "hello"
-        run: bin/pawg 1 40 -H hello
+        run: bin/pwgen 1 40 -H hello
         
       - name: Generate 5 hash-based segmented (size 20) passwords using seed "scrubs"
-        run: bin/pawg 5 20 -sha1 scrubs
+        run: bin/pwgen 5 20 -sha1 scrubs
